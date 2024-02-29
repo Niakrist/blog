@@ -6,6 +6,7 @@ import Home from "./components/main/screens/page-home/Home";
 import { Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
 import Contact from "./components/main/screens/page-contact/Contact";
 import About from "./components/main/screens/page-about/About";
+import Loader from "./components/ui/loader/Loader";
 
 function App() {
   const [posts, setPosts] = useState("");
@@ -51,20 +52,7 @@ function App() {
     <>
       <Header />
       <main className="main">
-        {isLoading ? (
-          <div
-            style={{
-              textAlign: "center",
-              fontSize: "30px",
-              fontWeight: 600,
-              color: "red",
-              marginTop: "50px",
-            }}>
-            Загрузка
-          </div>
-        ) : (
-          ""
-        )}
+        <Loader isLoading={isLoading} />
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/posts">
