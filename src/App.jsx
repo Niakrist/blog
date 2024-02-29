@@ -7,6 +7,7 @@ import { Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
 import Contact from "./components/main/screens/page-contact/Contact";
 import About from "./components/main/screens/page-about/About";
 import Loader from "./components/ui/loader/Loader";
+import Routers from "./routers/Routers";
 
 function App() {
   const [posts, setPosts] = useState("");
@@ -53,19 +54,12 @@ function App() {
       <Header />
       <main className="main">
         <Loader isLoading={isLoading} />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/posts">
-            <PagePost
-              cropPosts={cropPosts}
-              handleChangePage={handleChangePage}
-              numberPages={numberPages}
-              curentPage={curentPage}
-            />
-          </Route>
-          <Route path="/contact" component={Contact} />
-          <Route path="/about" component={About} />
-        </Switch>
+        <Routers
+          cropPosts={cropPosts}
+          handleChangePage={handleChangePage}
+          numberPages={numberPages}
+          curentPage={curentPage}
+        />
       </main>
       <Footer />
     </>
